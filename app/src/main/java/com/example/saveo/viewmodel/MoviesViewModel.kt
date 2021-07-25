@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.saveo.model.Response
 import androidx.lifecycle.liveData
 import com.example.saveo.model_saveo.ResponseSaveo
+import com.example.saveo.modelhorizontal.HorizonalClass
 import com.example.saveo.repository.MoviesRepository
 import kotlinx.coroutines.Dispatchers
 
@@ -21,7 +22,12 @@ class MoviesViewModel: ViewModel(){
             val result = repository.getListOfMovies()
             emit(result.data!!)
         }
-
     }
 
+    fun getMovie2(): LiveData<List<HorizonalClass>> {
+        return liveData(Dispatchers.IO) {
+            val result = repository.getListOfMovies2()
+            emit(result.data!!)
+        }
+    }
 }

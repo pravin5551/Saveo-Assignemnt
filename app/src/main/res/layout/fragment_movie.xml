@@ -1,14 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.MovieFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:background="#313c6f"
+            android:layout_marginStart="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:layout_height="@dimen/dp_50">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Movies"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dp_20"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="@dimen/dp_14"
+                    android:src="@drawable/ic_baseline_share_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView"
+                    android:layout_marginRight="@dimen/dp_14" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:background="#313c6f">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_200"
+                android:layout_marginStart="@dimen/dp_30"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_50"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_250"
+                android:layout_marginTop="@dimen/dp_50"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/dp_10"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginRight="@dimen/dp_10">
+
+                <TextView
+                    android:id="@+id/Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_50"
+                    android:text="The HateFul Eight"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dp_25"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+               <LinearLayout
+                   android:id="@+id/ll1"
+                   android:layout_width="@dimen/dp_150"
+                   android:layout_below="@+id/Title"
+                   android:weightSum="2"
+                   android:padding="@dimen/dp_5"
+                   android:layout_height="wrap_content">
+
+                   <TextView
+                       android:id="@+id/duration"
+                       android:layout_width="wrap_content"
+                       android:layout_height="@dimen/dp_15"
+                       android:layout_weight="1"
+                       android:gravity="center"
+                       android:textColor="@color/white"
+                       android:layout_marginTop="@dimen/dp_10"
+                       android:layout_below="@+id/Title"
+                       android:text="30 min" />
+                   <TextView
+                       android:id="@+id/date_"
+                       android:layout_width="wrap_content"
+                       android:layout_height="@dimen/dp_15"
+                       android:layout_weight="1"
+                       android:textColor="@color/white"
+                       android:layout_marginTop="@dimen/dp_10"
+                       android:text="| 30 Dec 2015" />
+               </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll2"
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_below="@+id/ll1"
+                    android:weightSum="2"
+                    android:padding="@dimen/dp_5"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/camera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_15"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:gravity="fill"
+                        android:background="@drawable/rect_drawable"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_below="@+id/Title"
+                        android:text="Camera" />
+                    <TextView
+                        android:id="@+id/mystory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_15"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:background="@drawable/rect_drawable"
+
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:text="30 min" />
+
+                    <TextView
+                        android:id="@+id/drama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_15"
+                        android:layout_weight="1"
+                        android:textColor="@color/white"
+                        android:background="@drawable/rect_drawable"
+
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:text="30 min" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/fivestarimage"
+                    android:layout_below="@+id/ll2"
+                    android:layout_width="100dp"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/five_star_image"
+                    />
+                <LinearLayout
+                    android:id="@+id/ll3"
+                    android:layout_width="@dimen/dp_150"
+                    android:layout_below="@+id/fivestarimage"
+                    android:weightSum="2"
+                    android:padding="@dimen/dp_5"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/review"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_15"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:text="@string/reviews" />
+
+
+                    <TextView
+                        android:id="@+id/idmb_rating"
+                        android:layout_width="@dimen/dp_200"
+                        android:layout_height="@dimen/dp_15"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/sp_13"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:text="(Critical) | 2345(user)" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/dp_23"
+            app:cardElevation="@dimen/dp_5"
+            android:layout_gravity="end"
+            app:cardUseCompatPadding="true"
+
+            >
+
+            <Button
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_5"
+                android:background="@drawable/circulor_bg"
+                android:text="BOOK NOW"
+
+
+                android:textColor="@color/Blue" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_5"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Synopsis"
+                android:layout_margin="@dimen/dp_5"
+                android:textSize="@dimen/sp_25"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tv_synopsis"
+                />
+            <TextView
+                android:id="@+id/tv_synopsis"
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/dp_5"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="The single-camera series that mixes live-action and animation stars Jacob Bertrand as the title character. <b>Kirby Buckets</b> introduces viewers to the vivid imagination of charismatic 13-year-old Kirby Buckets, who dreams of becoming a famous animator like his idol, Mac MacCallister. With his two best friends, Fish and Eli, by his side, Kirby navigates his eccentric town of Forest Hills where the trio usually find themselves trying to get out of a predicament before Kirby's sister, Dawn, and her best friend, Belinda, catch them. Along the way, Kirby is joined by his animated characters, each with their own vibrant personality that only he and viewers can see"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </LinearLayout>
+
+</ScrollView>

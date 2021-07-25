@@ -7,7 +7,7 @@ import com.example.saveo.R
 import com.example.saveo.model_saveo.ResponseSaveoItem
 import com.example.saveo.viewholder.MovieViewHolder
 
-class MoviesAdapter(private var responseItemList: List<ResponseSaveoItem>): RecyclerView.Adapter<MovieViewHolder>() {
+class MoviesHorizontalAdapter(private var responseItemList: List<ResponseSaveoItem>): RecyclerView.Adapter<MovieViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.slider_layout,parent, false)
         return MovieViewHolder(view)

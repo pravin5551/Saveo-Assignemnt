@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#313c6f"
-
-    tools:context=".fragment.LandingFragment">
 
    <LinearLayout
+       xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       xmlns:tools="http://schemas.android.com/tools"
        android:layout_width="match_parent"
        android:orientation="vertical"
-       android:layout_height="match_parent">
+    android:background="#313c6f"
+       android:layout_height="match_parent"
+       tools:context=".fragment.LandingFragment">
 
        <com.google.android.material.appbar.AppBarLayout
            android:layout_width="match_parent"
@@ -62,14 +59,15 @@
 
        </com.google.android.material.appbar.AppBarLayout>
 
-       <androidx.core.widget.NestedScrollView
+       <ScrollView
            android:layout_width="match_parent"
+           android:background="#313c6f"
            android:layout_height="wrap_content">
 
            <LinearLayout
                android:layout_width="match_parent"
                android:orientation="vertical"
-               android:layout_height="match_parent">
+               android:layout_height="wrap_content">
 
                <androidx.recyclerview.widget.RecyclerView
                    android:id="@+id/recycler_horizontal"
@@ -84,12 +82,13 @@
                    android:gravity="center"
                    />
                <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/recycler_vertical"
                    android:layout_width="match_parent"
                    android:layout_height="match_parent"/>
            </LinearLayout>
 
 
-       </androidx.core.widget.NestedScrollView>
+       </ScrollView>
    </LinearLayout>
 
 
@@ -97,4 +96,3 @@
 
 
 
-</FrameLayout>
