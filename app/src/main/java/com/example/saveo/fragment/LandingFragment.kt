@@ -5,31 +5,49 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.saveo.R
+import com.example.saveo.adapter.MoviesAdapter
+import com.example.saveo.model_saveo.ResponseSaveoItem
+import com.example.saveo.viewmodel.MoviesViewModel
+import kotlinx.android.synthetic.main.fragment_landign.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LandingFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LandingFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var movieAdapter: MoviesAdapter
+    private var viewModel = MoviesViewModel()
+    private var movieList : List<ResponseSaveoItem> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setRecyclerviewAdapter()
+        setDataMeme()
+    }
+
+    private fun setDataMeme() {
+        viewModel = ViewModelProviders.of(this).get(MoviesViewModel:: class.java)
+        viewModel.getMoviesData().observe(this.requireActivity(), Observer {
+            var value = it
+            movieAdapter.updateList(value)
+        })
+    }
+
+    private fun setRecyclerviewAdapter() {
+        movieAdapter = MoviesAdapter(movieList)
+        val linearLayoutManager = LinearLayoutManager(this.requireContext())
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        recycler_horizontal.layoutManager = linearLayoutManager
+        recycler_horizontal.adapter = movieAdapter
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,23 +56,5 @@ class LandingFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_landign, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LandignFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LandingFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }
