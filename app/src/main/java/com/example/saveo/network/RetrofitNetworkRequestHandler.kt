@@ -2,6 +2,7 @@ package com.example.saveo.network
 
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
+
 /*
 *
 * Retrofit response helper
@@ -15,6 +16,7 @@ data class Resource<out T>(val status: Status, val data: T?, val message: String
                 null
             )
         }
+
         fun <T> error(msg: String, data: T?): Resource<T> {
             return Resource(
                 Status.ERROR,
@@ -22,6 +24,7 @@ data class Resource<out T>(val status: Status, val data: T?, val message: String
                 msg
             )
         }
+
         fun <T> loading(data: T?): Resource<T> {
             return Resource(
                 Status.LOADING,
@@ -31,18 +34,22 @@ data class Resource<out T>(val status: Status, val data: T?, val message: String
         }
     }
 }
+
 enum class Status {
     SUCCESS,
     ERROR,
     LOADING
 }
+
 enum class ErrorCodes(val code: Int) {
     SocketTimeOut(-1)
 }
+
 open class ResponseHandler {
     fun <T : Any> handleSuccess(data: T): Resource<T> {
         return Resource.success(data)
     }
+
     fun <T : Any> handleException(e: Exception): Resource<T> {
         return when (e) {
             is HttpException -> Resource.error(
@@ -59,6 +66,7 @@ open class ResponseHandler {
             )
         }
     }
+
     private fun getErrorMessage(code: Int): String {
         return when (code) {
             ErrorCodes.SocketTimeOut.code -> "Timeout"

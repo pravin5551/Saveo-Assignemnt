@@ -14,7 +14,7 @@ class Network {
 
         fun getInstance(): Retrofit {
             return Retrofit.Builder()
-                .baseUrl("https://api.tvmaze.com")
+                .baseUrl("https://api.tvmaze.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build())
                 .build()
