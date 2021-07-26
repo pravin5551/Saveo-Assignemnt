@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.saveo.R
-import com.example.saveo.model.ResponseClass
+import com.example.saveo.model.MoviesResponse
 import com.example.saveo.viewHolder.MovieViewHolder
 
+/**
+ * In this adapter class im binding the view to the slider_item_layout
+ *
+ */
 
-class MoviesHorizontalAdapter(
-    private var showList: List<ResponseClass>,
+class MoviesAdapter(
+    private var showList: List<MoviesResponse>,
 ) :
     RecyclerView.Adapter<MovieViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -27,7 +31,11 @@ class MoviesHorizontalAdapter(
         return showList.size
     }
 
-    fun updateData(showList: List<ResponseClass>) {
+    /**
+     * Updating new fetched data to list and notifying to the adapter that data has changes
+     */
+
+    fun updateData(showList: List<MoviesResponse>) {
         this.showList = showList
         notifyDataSetChanged()
     }

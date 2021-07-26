@@ -11,7 +11,7 @@ class MovieViewHolder(private val view: View) :
 
     fun setData(showClass: ShowClass) {
         view.apply {
-            Glide.with(showImage).load(showClass.image!!.original).into(showImage)
+            Glide.with(movie_image).load(showClass.image!!.original).into(movie_image)
         }
     }
 }

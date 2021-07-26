@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/showImage2"
+        android:id="@+id/movie_image_vertical"
         android:layout_width="160dp"
         android:layout_height="@dimen/dp_200"
         android:scaleType="fitXY" />

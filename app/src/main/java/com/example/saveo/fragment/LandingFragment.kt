@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.saveo.R
-import com.example.saveo.adapter.MoviesHorizontalAdapter
+import com.example.saveo.adapter.MoviesAdapter
 import com.example.saveo.adapter.MovieVerticalAdapter
 import com.example.saveo.interfaceClass.OnClickListenerMovies
-import com.example.saveo.model.ResponseClass
-import com.example.saveo.model_second_hori.HorizonalClass
+import com.example.saveo.model.MoviesResponse
+import com.example.saveo.model_second_hori.TopRecycleClass
 import com.example.saveo.viewModel.MovieShowDetailViewModel
 import com.example.saveo.viewModel.MovieViewModel
 import com.rahul.saveoapp.fragments.MovieFragment
@@ -26,16 +26,30 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * This is the landing Home Fragment 
+ * Here Im calling two recyclerviews One at top horizontally and another one at bottom vertically using grid layout
+ */
 
 class LandingFragment : Fragment(), OnClickListenerMovies {
-    private lateinit var moviesHorizontalAdapter: MoviesHorizontalAdapter
+    /*
+    lateinit for future variable decleration
+     */
+    private lateinit var moviesAdapter: MoviesAdapter
+    
     private lateinit var movieVerticalAdapter: MovieVerticalAdapter
+    
     private var viewModel = MovieViewModel()
     private lateinit var movieShowDetailViewModel: MovieShowDetailViewModel
-    private var movieList: List<ResponseClass> = listOf()
-    private var verticalList: List<HorizonalClass> = listOf()
+    
+    private var movieList: List<MoviesResponse> = listOf()
+    private var verticalList: List<TopRecycleClass> = listOf()
+    /*
+    variable for paging declaration
+     */
+    
     private var loading = true
-    var pastVisiblesItems = 0
+    var VisibilityPostItem = 0
     var visibleItemCount: Int = 0
     var totalItemCount: Int = 0
     override fun onCreateView(
@@ -49,56 +63,33 @@ class LandingFragment : Fragment(), OnClickListenerMovies {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         movieShowDetailViewModel = ViewModelProviders.of(requireActivity()).get(MovieShowDetailViewModel::class.java)
-        setRecyclerView()
-        hitApi()
+        HorizontalRecyclerView()
+        VerticalRecyclerView()
+        fetch_the_data()
     }
 
-    private fun setRecyclerView() {
-        moviesHorizontalAdapter = MoviesHorizontalAdapter(movieList)
-        val linearLayoutManager = LinearLayoutManager(this.context)
-        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        recyclerview.layoutManager = linearLayoutManager
-        recyclerview.adapter = moviesHorizontalAdapter
+    /**
+     * Vertical span count 3 recyclerview setup
+     */
 
-        recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 0) { //check for scroll down
-                    visibleItemCount = linearLayoutManager.getChildCount()
-                    totalItemCount = linearLayoutManager.getItemCount()
-                    pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition()
-                    if (loading) {
-                        if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
-                            loading = false
-                            Log.d("hello", "Last Item Wow !")
-                            CoroutineScope(Dispatchers.IO).launch {
-                                viewModel.getMovie()
-                            }
-                            loading = true
-                        }
-                    }
-                }
-            }
-        })
-
-
-
+    private fun VerticalRecyclerView() {
         movieVerticalAdapter = MovieVerticalAdapter(verticalList, this)
         val gridLayoutManager = GridLayoutManager(this.context, 3)
-        verticalrecyclerview.layoutManager = gridLayoutManager
-        verticalrecyclerview.adapter = movieVerticalAdapter
+        vertical_recyclerview.layoutManager = gridLayoutManager
+        vertical_recyclerview.adapter = movieVerticalAdapter
 
-        verticalrecyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        vertical_recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy > 0) { //check for scroll down
                     visibleItemCount = gridLayoutManager.getChildCount()
                     totalItemCount = gridLayoutManager.getItemCount()
-                    pastVisiblesItems = gridLayoutManager.findFirstVisibleItemPosition()
+                    VisibilityPostItem = gridLayoutManager.findFirstVisibleItemPosition()
                     if (loading) {
-                        if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
+                        if (visibleItemCount + VisibilityPostItem >= totalItemCount) {
                             loading = false
                             Log.v("...", "Last Item Wow !")
                             CoroutineScope(Dispatchers.IO).launch {
-                                viewModel.getMovie2()
+                                viewModel.getMovieBottom()
                             }
                             loading = true
                         }
@@ -108,23 +99,66 @@ class LandingFragment : Fragment(), OnClickListenerMovies {
         })
     }
 
-    private fun hitApi() {
+    /**
+     * Gere i'm calling the API using ViewModel
+     */
+    private fun fetch_the_data() {
         viewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
-        viewModel.getMovie().observe(this.requireActivity(), Observer {
-            moviesHorizontalAdapter.updateData(it)
+        viewModel.getMovieTop().observe(this.requireActivity(), Observer {
+            moviesAdapter.updateData(it)
         })
 
-        viewModel.getMovie2().observe(this.requireActivity(), Observer {
+        viewModel.getMovieBottom().observe(this.requireActivity(), Observer {
             verticalList = it
             movieVerticalAdapter.updateData(verticalList)
         })
     }
 
-    override fun onClick(position: Int) {
-        movieShowDetailViewModel.getShowDetails(verticalList[position])
-        val detailFragment = MovieFragment()
+    /**
+     * HorizontalRecyclerView recyclerview setup
+     */
+    
+    private fun HorizontalRecyclerView() {
+        moviesAdapter = MoviesAdapter(movieList)
+        val linearLayoutManager = LinearLayoutManager(this.context)
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        horizontal_recyclerview.layoutManager = linearLayoutManager
+        horizontal_recyclerview.adapter = moviesAdapter
+
+        horizontal_recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0) { //check for scroll down
+                    visibleItemCount = linearLayoutManager.getChildCount()
+                    totalItemCount = linearLayoutManager.getItemCount()
+                    VisibilityPostItem = linearLayoutManager.findFirstVisibleItemPosition()
+                    if (loading) {
+                        if (visibleItemCount + VisibilityPostItem >= totalItemCount) {
+                            loading = false
+                            Log.d("hello", "Last Item Wow !")
+                            CoroutineScope(Dispatchers.IO).launch {
+                                viewModel.getMovieTop()
+                            }
+                            loading = true
+                        }
+                    }
+                }
+            }
+        })
+
+
+
+  
+    }
+
+    /**
+     * Onclick of any movie new window will open i.e MovieFragment
+     */
+
+    override fun OnCLickDataPassing(position: Int) {
+        movieShowDetailViewModel.getShow(verticalList[position])
+        val movieFragment = MovieFragment()
         requireActivity().supportFragmentManager.beginTransaction()
-            .add(R.id.flconatiner, detailFragment, "detailFragment").addToBackStack(null).commit()
+            .add(R.id.flconatiner, movieFragment, "movieFragment").addToBackStack(null).commit()
     }
 
 }

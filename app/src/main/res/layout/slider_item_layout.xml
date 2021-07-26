@@ -7,7 +7,7 @@
     app:cardUseCompatPadding="true">
 
     <ImageView
-        android:id="@+id/showImage"
+        android:id="@+id/movie_image"
         android:layout_width="@dimen/dp_250"
         android:layout_height="@dimen/dp_200"
         android:scaleType="fitXY" />

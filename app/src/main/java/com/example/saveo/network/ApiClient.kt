@@ -1,24 +1,28 @@
 package com.example.saveo.network
 
 
-import com.example.saveo.model.ResponseClass
-import com.example.saveo.model_second_hori.HorizonalClass
+import com.example.saveo.model.MoviesResponse
+import com.example.saveo.model_second_hori.TopRecycleClass
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
 
 interface ApiClient {
-
+    /**
+     * This @Get for Horizontal Recyclerview
+     */
     @Headers("Accept: application/json")
     @GET("search/shows?q=god")
-    suspend fun getShows(
+    suspend fun getHorizontralData(
         @Header("Content-Type") contentType: String
-    ): List<ResponseClass>
+    ): List<MoviesResponse>
 
-
+    /**
+     * This @Get for Vertical Recyclerview
+     */
     @Headers("Accept: application/json")
     @GET("shows?page=1")
-    suspend fun getShows2(
+    suspend fun getVerticalData(
         @Header("Content-Type") contentType: String
-    ): List<HorizonalClass>
+    ): List<TopRecycleClass>
 }

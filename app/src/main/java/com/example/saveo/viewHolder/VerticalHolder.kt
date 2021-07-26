@@ -12,10 +12,10 @@ class VerticalHolder(private val view: View, private val onClickListenerMovies: 
 
     fun setData(imageClasss: ImageClasss) {
         view.apply {
-            Glide.with(showImage2).load(imageClasss.original).into(showImage2)
+            Glide.with(movie_image_vertical).load(imageClasss.original).into(movie_image_vertical)
         }
         view.setOnClickListener {
-            onClickListenerMovies.onClick(adapterPosition)
+            onClickListenerMovies.OnCLickDataPassing(adapterPosition)
         }
     }
 }

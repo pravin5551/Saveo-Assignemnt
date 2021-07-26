@@ -5,6 +5,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Network class to get response from server
+ * here i have added base url
+ */
 class Network {
 
     companion object {

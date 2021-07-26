@@ -1,6 +1,6 @@
 package com.example.saveo.model_second_hori
 
-data class HorizonalClass(
+data class TopRecycleClass(
 	val summary: String? = null,
 	val image: ImageClasss? = null,
 	val averageRuntime: Int? = null,
