@@ -26,7 +26,10 @@ This is an assignment given by Saveo.
 
 
 ## Download
-Go to the [Playstore](https://drive.google.com/drive/folders/18aMNxtGhEmKanCD5HCPOW7mC08WOaMVH?usp=sharing) to download APK.
+Go to the [Google Drive](https://drive.google.com/drive/folders/18aMNxtGhEmKanCD5HCPOW7mC08WOaMVH?usp=sharing) to download APK.
+
+##Video 
+[Watch](https://drive.google.com/file/d/1oh_KFIwRNPDSlODxn1wHGhkMhiRG8-7z/view?usp=sharing)
 
 
 
@@ -43,6 +46,7 @@ Go to the [Playstore](https://drive.google.com/drive/folders/18aMNxtGhEmKanCD5HC
   - Repository pattern
 - [Retrofit](https://square.github.io/retrofit/) - Http client.
 - [Gson](https://github.com/google/gson) - To use JSON in koltin.
+- [Pagging](https://developer.android.com/jetpack/androidx/releases/pagingn) - To use Pagin for infinite recyclerview.
 </br>
 </br>
 </br>
