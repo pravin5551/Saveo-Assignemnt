@@ -8,12 +8,6 @@ This is an assignment given by Saveo.
   <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
 </p>
 
-<p align="center">
-<img src="https://github.com/pravin5551/Saveo-Assignemnt/blob/main/app/src/images/ss_one.png"/>
-<img src="https://github.com/pravin5551/Saveo-Assignemnt/blob/main/app/src/images/ss_three-093113.png"/>
-<img src="https://github.com/pravin5551/Saveo-Assignemnt/blob/main/app/src/images/ss_two.png"/>
-
-</p>
 
 ## App Screenshots
 
