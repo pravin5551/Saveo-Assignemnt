@@ -12,7 +12,7 @@ import com.example.saveo.R
 
 import com.example.saveo.model_second_hori.HorizonalClass
 import com.example.saveo.viewModel.MovieShowDetailViewModel
-import kotlinx.android.synthetic.main.fragment_detail.*
+import kotlinx.android.synthetic.main.fragment_movies.*
 
 
 class MovieFragment : Fragment() {

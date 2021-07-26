@@ -20,7 +20,8 @@ import com.example.saveo.model_second_hori.HorizonalClass
 import com.example.saveo.viewModel.MovieShowDetailViewModel
 import com.example.saveo.viewModel.MovieViewModel
 import com.rahul.saveoapp.fragments.MovieFragment
-import kotlinx.android.synthetic.main.fragment_base.*
+import kotlinx.android.synthetic.main.fragment_landing.*
+
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
