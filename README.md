@@ -15,7 +15,6 @@ This is an assignment given by Saveo.
   <tr>
     <td><img src="https://github.com/pravin5551/Saveo-Assignemnt/blob/main/app/src/images/ss_one.png" width="200"/></td>
     <td><img src="https://github.com/pravin5551/Saveo-Assignemnt/blob/main/app/src/images/ss_three-093113.png" width="200"/></td>
-    <td><img src="https://user-images.githubusercontent.com/44438444/125679710-5e39e880-f668-43d6-9e07-cef59a52993b.png" width="200"/></td>
   
   </tr>
   
