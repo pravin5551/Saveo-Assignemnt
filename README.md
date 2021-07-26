@@ -15,12 +15,10 @@ This is an assignment given by Saveo.
   <tr>
     <td><img src="https://github.com/pravin5551/Saveo-Assignemnt/blob/main/app/src/images/ss_one.png" width="200"/></td>
     <td><img src="https://github.com/pravin5551/Saveo-Assignemnt/blob/main/app/src/images/ss_three-093113.png" width="200"/></td>
-  
+     <td><img src="https://github.com/pravin5551/Saveo-Assignemnt/blob/main/app/src/images/ss_two.png" width="200"/></td>
   </tr>
   
-  <tr>
-    <td><img src="https://github.com/pravin5551/Saveo-Assignemnt/blob/main/app/src/images/ss_two.png" width="200"/></td>
- </tr>
+
 
   
  </table>
